@@ -11,8 +11,7 @@ export class BrowserAgentError extends Error {
     }
 }
 
-
-const ERROR_CODES = Object.freeze({
+export const ERROR_CODES = Object.freeze({
     INVALID_INPUT: "INVALID_INPUT",
     FETCH_SCHEDULED_FAILED: "FETCH_SCHEDULED_FAILED",
     BROWSER_LAUNCH_FAILED: "BROWSER_LAUNCH_FAILED",
@@ -21,52 +20,3 @@ const ERROR_CODES = Object.freeze({
     INVALID_CSV_FILE: "INVALID_CSV_FILE",
     DOWNLOAD_CSV_REPORT_FAIL: "DOWNLOAD_CSV_REPORT_FAIL",
 });
-
-export const ErrorFactory = {
-    invalidInput: (message) =>
-        new BrowserAgentError(
-            message,
-            ERROR_CODES.INVALID_INPUT
-        ),
-
-    fetchScheduledFailed: (error) =>
-        new BrowserAgentError(
-            `Failed to fetch scheduled extractions: ${error.message}`,
-            ERROR_CODES.FETCH_SCHEDULED_FAILED,
-            error
-        ),
-
-    browserLaunchFailed: (error) =>
-        new BrowserAgentError(
-            `Failed to launch browser: ${error.message}`,
-            ERROR_CODES.BROWSER_LAUNCH_FAILED,
-            error
-        ),
-
-    noPages: () =>
-        new BrowserAgentError(
-            "Browser has no pages available.",
-            ERROR_CODES.NO_PAGES
-        ),
-
-    facilityValidationFail: (facilityValidationErrorMessage) =>
-        new BrowserAgentError(
-            facilityValidationErrorMessage,
-            ERROR_CODES.FAC_VALIDATION_FAIL
-        ),
-
-    invalidCsvFile: (err) =>
-        new BrowserAgentError(
-            `Invalid CSV file: ${err.message}`,
-            ERROR_CODES.INVALID_CSV_FILE,
-            err
-        ),
-
-    downloadCSVReportFailed: (error) =>
-        new BrowserAgentError(
-            `Download CSV report resulted in a server error: ${error.message}`,
-            ERROR_CODES.DOWNLOAD_CSV_REPORT_FAIL,
-            error
-        ),
-
-};

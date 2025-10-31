@@ -36,7 +36,10 @@ Defines the `BrowserAgentError` class (extends `Error`) and the `ErrorFactory`.
 **Example:**
 
 ```javascript
-throw ErrorFactory.invalidInput("Invalid input provided.");
+ throw new BrowserAgentError(
+        "Invalid input provided.",
+        ERROR_CODES.INVALID_INPUT
+    );
 ```
 ### 2. `script.js`
 
